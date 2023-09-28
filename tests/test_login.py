@@ -4,71 +4,70 @@ from locators.locators import Locators
 from data import UserData
 
 
-def test_enter_account_button(driver):
+class TestLogin:
 
-    driver.find_element(*Locators.ENTER_ACCOUNT_BUTTON).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
+    def test_enter_account_button(self, driver):
 
-    driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
-    driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
-    driver.find_element(*Locators.ENTER_BUTTON).click()
+        driver.find_element(*Locators.ENTER_ACCOUNT_BUTTON).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
 
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
+        driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
+        driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
+        driver.find_element(*Locators.ENTER_BUTTON).click()
 
-    order_button = driver.find_element(*Locators.ORDER_BUTTON)
-    assert order_button.is_displayed()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
+        order_button = driver.find_element(*Locators.ORDER_BUTTON)
+        assert order_button.is_displayed()
 
-def test_personal_account_button(driver):
+    def test_personal_account_button(self, driver):
 
-    driver.find_element(*Locators.ACCOUNT_LINK).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
+        driver.find_element(*Locators.ACCOUNT_LINK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
 
-    driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
-    driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
-    driver.find_element(*Locators.ENTER_BUTTON).click()
+        driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
+        driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
+        driver.find_element(*Locators.ENTER_BUTTON).click()
 
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
-    order_button = driver.find_element(*Locators.ORDER_BUTTON)
-    assert order_button.is_displayed()
+        order_button = driver.find_element(*Locators.ORDER_BUTTON)
+        assert order_button.is_displayed()
 
+    def test_enter_link_on_reg_page(self, driver):
 
-def test_enter_link_on_reg_page(driver):
+        driver.find_element(*Locators.ACCOUNT_LINK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
+        driver.find_element(*Locators.REGISTER_LINK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.REGISTRATION_BUTTON))
 
-    driver.find_element(*Locators.ACCOUNT_LINK).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
-    driver.find_element(*Locators.REGISTER_LINK).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.REGISTRATION_BUTTON))
+        driver.find_element(*Locators.ENTER_LINK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
 
-    driver.find_element(*Locators.ENTER_LINK).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
+        driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
+        driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
+        driver.find_element(*Locators.ENTER_BUTTON).click()
 
-    driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
-    driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
-    driver.find_element(*Locators.ENTER_BUTTON).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
+        order_button = driver.find_element(*Locators.ORDER_BUTTON)
+        assert order_button.is_displayed()
 
-    order_button = driver.find_element(*Locators.ORDER_BUTTON)
-    assert order_button.is_displayed()
+    def test_enter_link_on_reset_pass_page(self, driver):
 
+        driver.find_element(*Locators.ACCOUNT_LINK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
+        driver.find_element(*Locators.RESET_PASS_LINK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.RESET_BUTTON))
 
-def test_enter_link_on_reset_pass_page(driver):
+        driver.find_element(*Locators.ENTER_LINK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
 
-    driver.find_element(*Locators.ACCOUNT_LINK).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
-    driver.find_element(*Locators.RESET_PASS_LINK).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.RESET_BUTTON))
+        driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
+        driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
+        driver.find_element(*Locators.ENTER_BUTTON).click()
 
-    driver.find_element(*Locators.ENTER_LINK).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
-    driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
-    driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
-    driver.find_element(*Locators.ENTER_BUTTON).click()
-
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
-
-    order_button = driver.find_element(*Locators.ORDER_BUTTON)
-    assert order_button.is_displayed()
+        order_button = driver.find_element(*Locators.ORDER_BUTTON)
+        assert order_button.is_displayed()

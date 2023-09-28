@@ -4,21 +4,24 @@ from locators.locators import Locators
 from data import UserData
 
 
-def test_logout_from_account(driver):
+class TestLogout:
 
-    driver.find_element(*Locators.ENTER_ACCOUNT_BUTTON).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
+    def test_logout_from_account(self, driver):
 
-    driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
-    driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
-    driver.find_element(*Locators.ENTER_BUTTON).click()
+        driver.find_element(*Locators.ENTER_ACCOUNT_BUTTON).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_BUTTON))
 
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
+        driver.find_element(*Locators.INPUT_EMAIL).send_keys(UserData.LOGIN)
+        driver.find_element(*Locators.INPUT_PASSWORD).send_keys(UserData.PASSWORD)
+        driver.find_element(*Locators.ENTER_BUTTON).click()
 
-    driver.find_element(*Locators.ACCOUNT_LINK).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.PROFILE_LINK))
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
-    driver.find_element(*Locators.LOGOUT_BUTTON).click()
-    WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ENTER_TITLE_LOGIN_PAGE))
+        driver.find_element(*Locators.ACCOUNT_LINK).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.PROFILE_LINK))
 
-    assert driver.find_element(*Locators.ENTER_BUTTON).is_displayed()
+        driver.find_element(*Locators.LOGOUT_BUTTON).click()
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(
+            Locators.ENTER_TITLE_LOGIN_PAGE))
+
+        assert driver.find_element(*Locators.ENTER_BUTTON).is_displayed()
