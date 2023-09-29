@@ -4,7 +4,7 @@ import string
 
 def generate_login():
     number = random.randint(1000, 9999)
-    login = f'test_testov_{number}@ya.ru'
+    login = f'test_testoviy_{number}@ya.ru'
     return login
 
 

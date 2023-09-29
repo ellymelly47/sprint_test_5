@@ -14,15 +14,24 @@ class TestRegistration:
         driver.find_element(*Locators.REGISTER_LINK).click()
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.REGISTRATION_BUTTON))
 
+        current_login = generate_login()
+        current_password = generate_password()
         driver.find_element(*Locators.INPUT_NAME).send_keys('Ivan')
-        driver.find_element(*Locators.INPUT_EMAIL).send_keys(generate_login())
-        driver.find_element(*Locators.INPUT_PASSWORD).send_keys(generate_password())
+        driver.find_element(*Locators.INPUT_EMAIL).send_keys(current_login)
+        driver.find_element(*Locators.INPUT_PASSWORD).send_keys(current_password)
         driver.find_element(*Locators.REGISTRATION_BUTTON).click()
 
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(
             Locators.ENTER_TITLE_LOGIN_PAGE))
 
-        assert driver.find_element(*Locators.ENTER_BUTTON).is_displayed()
+        driver.find_element(*Locators.INPUT_EMAIL).send_keys(current_login)
+        driver.find_element(*Locators.INPUT_PASSWORD).send_keys(current_password)
+        driver.find_element(*Locators.ENTER_BUTTON).click()
+
+        WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
+
+        order_button = driver.find_element(*Locators.ORDER_BUTTON)
+        assert order_button.is_displayed()
 
     def test_wrong_password_reg(self, driver):
 
