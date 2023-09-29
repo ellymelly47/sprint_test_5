@@ -18,7 +18,7 @@ class TestLogin:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
         order_button = driver.find_element(*Locators.ORDER_BUTTON)
-        assert order_button.is_displayed()
+        assert order_button.is_displayed(), 'Не удалось залогиниться через кнопку "Войти в аккаунт"'
 
     def test_personal_account_button(self, driver):
 
@@ -32,7 +32,7 @@ class TestLogin:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
         order_button = driver.find_element(*Locators.ORDER_BUTTON)
-        assert order_button.is_displayed()
+        assert order_button.is_displayed(), 'Не удалось залогиниться через ссылку на "Личный кабинет"'
 
     def test_enter_link_on_reg_page(self, driver):
 
@@ -51,7 +51,7 @@ class TestLogin:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
         order_button = driver.find_element(*Locators.ORDER_BUTTON)
-        assert order_button.is_displayed()
+        assert order_button.is_displayed(), 'Не удалось залогиниться через ссылку "Войти в аккаунт" на стр. регистрации'
 
     def test_enter_link_on_reset_pass_page(self, driver):
 
@@ -70,4 +70,5 @@ class TestLogin:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
         order_button = driver.find_element(*Locators.ORDER_BUTTON)
-        assert order_button.is_displayed()
+        assert order_button.is_displayed(), \
+            'Не удалось залогиниться через ссылку "Войти в аккаунт" на стр. восстановления пароля'

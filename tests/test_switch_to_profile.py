@@ -20,4 +20,5 @@ class TestRedirectToProfile:
         driver.find_element(*Locators.ACCOUNT_LINK).click()
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.SAVE_PROFILE_BUTTON))
 
-        assert driver.find_element(*Locators.PROFILE_LINK).is_displayed()
+        assert driver.find_element(*Locators.PROFILE_LINK).is_displayed(), \
+            'Не удалось перейти в ЛК с главной стр. после логина'

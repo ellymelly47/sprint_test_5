@@ -20,7 +20,7 @@ class TestConstructorTabs:
         driver.find_element(*Locators.CONSTRUCTOR_TAB_FILLING).click()
 
         filling_tab = driver.find_element(*Locators.CONSTRUCTOR_TAB_FILLING)
-        assert "tab_type_current" in filling_tab.get_attribute("class")
+        assert "tab_type_current" in filling_tab.get_attribute("class"), 'Не удалось перейти к разделу "Начинки"'
 
     def test_select_sause_tab(self, driver):
 
@@ -36,7 +36,7 @@ class TestConstructorTabs:
         driver.find_element(*Locators.CONSTRUCTOR_TAB_SAUCE).click()
 
         sause_tab = driver.find_element(*Locators.CONSTRUCTOR_TAB_SAUCE)
-        assert "tab_type_current" in sause_tab.get_attribute("class")
+        assert "tab_type_current" in sause_tab.get_attribute("class"), 'Не удалось перейти к разделу "Соусы"'
 
     def test_select_loaf_tab(self, driver):
 
@@ -53,4 +53,4 @@ class TestConstructorTabs:
         driver.find_element(*Locators.CONSTRUCTOR_TAB_LOAF).click()
 
         loaf_tab = driver.find_element(*Locators.CONSTRUCTOR_TAB_LOAF)
-        assert "tab_type_current" in loaf_tab.get_attribute("class")
+        assert "tab_type_current" in loaf_tab.get_attribute("class"), 'Не удалось перейти к разделу "Булки"'

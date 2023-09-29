@@ -31,7 +31,7 @@ class TestRegistration:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
         order_button = driver.find_element(*Locators.ORDER_BUTTON)
-        assert order_button.is_displayed()
+        assert order_button.is_displayed(), 'Не удалось зарегистрировать нового юзера'
 
     def test_wrong_password_reg(self, driver):
 
@@ -48,4 +48,5 @@ class TestRegistration:
 
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.ERROR_STATE_INPUT))
 
-        assert driver.find_element(*Locators.ERROR_INPUT_TEXT).text == "Некорректный пароль"
+        assert driver.find_element(*Locators.ERROR_INPUT_TEXT).text == "Некорректный пароль", \
+            'Некорректный пароль при регистрации не вызывает ошибку'

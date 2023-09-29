@@ -24,4 +24,5 @@ class TestLogout:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(
             Locators.ENTER_TITLE_LOGIN_PAGE))
 
-        assert driver.find_element(*Locators.ENTER_BUTTON).is_displayed()
+        assert driver.find_element(*Locators.ENTER_BUTTON).is_displayed(), \
+            'Не удалось выйти из аккаунта по кнопке "Выйти"'

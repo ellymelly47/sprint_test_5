@@ -24,7 +24,8 @@ class TestRedirectToConstructor:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
         order_button = driver.find_element(*Locators.ORDER_BUTTON)
-        assert order_button.is_displayed()
+        assert order_button.is_displayed(), \
+            'Не удалось перейти из ЛК в Конструктор по клику на логотип Stellar Burgers'
 
     def test_direct_link_to_constructor(self, driver):
 
@@ -44,4 +45,4 @@ class TestRedirectToConstructor:
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(Locators.CONSTRUCTOR_TITLE))
 
         order_button = driver.find_element(*Locators.ORDER_BUTTON)
-        assert order_button.is_displayed()
+        assert order_button.is_displayed(), 'Не удалось перейти из ЛК в Конструктор через ссылку на "Конструктор"'
